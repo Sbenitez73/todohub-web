@@ -1,15 +1,27 @@
-# Getting Started with Create React App
+# Setup TodoHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+clone the project using this url:
 
-## Available Scripts
+`https://github.com/Sbenitez73/todohub-web.git`
+
+## Install and setup the project
 
 In the project directory, you can run:
 
-### `npm start`
+`npm install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+for install the node packages.
+
+after that you can just run this following command:
+
+`npm start`
+
+TodoHub run in the development mode, you need to have avaiable the port 3000 "[http://localhost:3000](http://localhost:3000)" for run the app.
+
+
+and that's it, following i will show to you the rest of the react documentation README.
+
+
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.

@@ -37,10 +37,10 @@
   }
 }
 
-.title-task {
-  overflow: hidden;
-   display: -webkit-box;
-   -webkit-line-clamp: 2;
-           line-clamp: 2; 
-   -webkit-box-orient: vertical;
+.container-todos {
+  max-height: 60%;
+}
+
+.ant-select-selector {
+  background-color:  #4b5563 !important;
 }

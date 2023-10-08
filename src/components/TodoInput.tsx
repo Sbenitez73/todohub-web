@@ -1,17 +1,24 @@
-import React, { useState, KeyboardEvent } from 'react'
+import { TaskForm } from './TaskForm';
+import { Todo } from '../models/todo';
+import { useState, KeyboardEvent } from 'react';
 
 interface Props {
-    addTodo: (title: string) => void
+    getAllTodos: () => void;
 }
 
-export const TodoInput = ({ addTodo }: Props) => {
-    const [title, setTitle] = useState('');
-
+export const TodoInput = ({getAllTodos}: Props) => {
+    const [taskToCreate, setTaskToCreate] = useState<Todo>(new Todo());
+    const [showTaskModal, setShowTaskModal] = useState(false);
+    
     const handleAddTodo = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key.toLowerCase() === 'enter') {
-            addTodo(title);
-            setTitle('');
+            setShowTaskModal(!showTaskModal);
         }
+    }
+
+    const handleModal = () => {
+        setTaskToCreate( new Todo() );
+        setShowTaskModal( !showTaskModal );
     }
 
     return (
@@ -23,12 +30,21 @@ export const TodoInput = ({ addTodo }: Props) => {
                 <input
                     className="focus:shadow-md font-Inter focus:shadow-slate-400 pl-12 w-full py-4 bg-gray-700 rounded-xl outline-none transition-all duration-300 ease-in-out"
                     type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={ taskToCreate.title ?? '' }
+                    onChange={(e) => setTaskToCreate({
+                        ...taskToCreate,
+                        title: e.target.value
+                    })}
                     onKeyDown={(e) => handleAddTodo(e)}
-                    placeholder="What's next..."
+                    placeholder="Agrega una nueva tarea"
                 />
             </div>
+            <TaskForm 
+                action='create'
+                task={ taskToCreate } 
+                show={ showTaskModal } 
+                handleModal={ handleModal } 
+                getAllTodos={ getAllTodos }/>
         </div>
     )
 }
